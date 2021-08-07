@@ -20,26 +20,24 @@
                 name:'Rahul',
                 age: 30
             }
-            handleClick = (e)=>{
+            handleChange= (e)=>{
                 this.setState({
-                    name: 'Rohan'
-                })
-                console.log(this.state)
+                    name: e.target.value
+                });
             }
-            handleMouseOver(e){
-                console.log(e.target, e.pageX);
-            }
-            handleCopy(e){
-                console.log('Be original');
+            handleSubmit = (e)=>{
+                e.preventDefault();//We are preventing from default behaviour i.e. It will not refresh the page on submit
+                console.log(this.state.name);
             }
             render() {
                 return (
                     <div className="App">
                         <h1>React Component</h1>
-                        <p>My Name is : { this.state.name } and I am { this.state.age } years old.</p>
-                        <button onClick={this.handleClick}>Click me</button>
-                        <button onMouseOver={this.handleMouseOver}>Hover me</button>
-                        <p onCopy={this.handleCopy}>Try to copy me</p>     
+                        <h1>My Name is : { this.state.name } .</h1>
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" name="Name" id="Name" onChange={this.handleChange}/>
+                            <button>Sub</button>
+                        </form>
                     </div>
                 )
             }
